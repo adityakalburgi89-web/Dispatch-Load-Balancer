@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "c1f72a80-1a1a-4b92-91f8-000000000001",
+		"name": "Dispatch Load Balancer API",
+		"description": "Postman Collection for Dispatch Load Balancer Backend Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Fleet Management",
+			"item": [
+				{
+					"name": "Register Vehicle 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehicleId\": \"VEH-01\",\n  \"capacity\": 100.0,\n  \"currentLatitude\": 37.7730,\n  \"currentLongitude\": -122.4180,\n  \"currentAddress\": \"Depot Central, San Francisco, CA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					}
+				},
+				{
+					"name": "Register Vehicle 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehicleId\": \"VEH-02\",\n  \"capacity": 50.0,\n  \"currentLatitude\": 37.7800,\n  \"currentLongitude\": -122.4000,\n  \"currentAddress\": \"Depot North, San Francisco, CA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Order Management",
+			"item": [
+				{
+					"name": "Create High Priority Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderId\": \"ORD-1001\",\n  \"latitude\": 37.7749,\n  \"longitude\": -122.4194,\n  \"address\": \"Market St, San Francisco, CA\",\n  \"packageWeight\": 45.0,\n  \"priority\": \"HIGH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Medium Priority Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderId\": \"ORD-1002\",\n  \"latitude\": 37.7600,\n  \"longitude\": -122.4100,\n  \"address\": \"Mission St, San Francisco, CA\",\n  \"packageWeight": 35.0,\n  \"priority\": \"MEDIUM\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Overcapacity Order (Unassignable)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderId\": \"ORD-HUGE\",\n  \"latitude\": 37.7900,\n  \"longitude\": -122.4050,\n  \"address\": \"Financial District, San Francisco, CA\",\n  \"packageWeight\": 300.0,\n  \"priority\": \"HIGH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Dispatch Plan",
+			"item": [
+				{
+					"name": "GET Dispatch Plan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dispatch/plan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"dispatch",
+								"plan"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
